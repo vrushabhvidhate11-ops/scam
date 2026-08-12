@@ -112,7 +112,7 @@ export default function HomePage() {
   const startCelebration = () => setCelebrating(true)
 
   return (
-    <main className="relative min-h-screen overflow-hidden bg-[radial-gradient(circle_at_top_left,_rgba(255,218,228,0.95),_transparent_24%),radial-gradient(circle_at_bottom_right,_rgba(255,244,247,0.95),_transparent_30%),#fff1f5] text-rose-950">
+    <main className="relative min-h-screen overflow-hidden bg-[radial-gradient(circle_at_top_left,_rgba(255,212,221,0.85),_transparent_24%),radial-gradient(circle_at_bottom_right,_rgba(255,244,247,0.9),_transparent_30%),linear-gradient(135deg,#fffafc_0%,#fff0f5_42%,#ffe4ec_100%)] text-rose-950">
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         {heartBubbles.map((bubble, index) => (
           <span
@@ -130,15 +130,15 @@ export default function HomePage() {
         ))}
       </div>
 
-      <div className="relative flex min-h-screen items-center justify-center px-4 py-10 sm:px-6 lg:px-8">
+      <div className="relative flex min-h-screen items-center justify-center px-3 py-6 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
-          className="relative w-full max-w-3xl overflow-hidden rounded-[34px] border border-white/80 bg-gradient-to-br from-white via-[#fff4f7] to-[#fff1f5] px-6 py-8 shadow-soft sm:px-10 sm:py-12"
+          className="relative w-full max-w-md overflow-hidden rounded-[30px] border border-pink-100/80 bg-white/80 p-4 shadow-[0_30px_70px_rgba(244,114,182,0.18)] backdrop-blur-sm sm:max-w-3xl sm:p-10"
         >
-          <div className="absolute -left-16 top-10 h-48 w-48 rounded-full bg-pink-100/80 blur-3xl" />
-          <div className="absolute right-0 top-20 h-40 w-40 rounded-full bg-rose-100/70 blur-3xl" />
+          <div className="absolute -left-12 top-8 h-28 w-28 rounded-full bg-pink-100/80 blur-3xl" />
+          <div className="absolute right-0 top-12 h-32 w-32 rounded-full bg-rose-100/70 blur-3xl" />
           <div className="relative">
             <AnimatePresence mode="wait">
               {step === stepStates.PROPOSAL && (
@@ -148,14 +148,14 @@ export default function HomePage() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -24 }}
                   transition={{ duration: 0.4 }}
-                  className="relative rounded-[28px] bg-white/90 p-6 shadow-[0_22px_60px_rgba(171,79,119,0.12)] sm:p-8"
+                  className="relative rounded-[28px] bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(255,240,245,0.95))] p-5 shadow-[0_22px_60px_rgba(171,79,119,0.12)] sm:p-8"
                 >
-                  <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-3xl bg-rose-50 text-4xl shadow-soft">
+                  <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-[26px] bg-gradient-to-br from-rose-50 to-pink-100 text-4xl shadow-[0_18px_35px_rgba(244,114,182,0.18)]">
                     <span>🥰</span>
                   </div>
                   <div className="text-center">
-                    <p className="text-sm uppercase tracking-[0.28em] text-rose-400">a little question</p>
-                    <h1 className="mt-4 text-3xl font-semibold leading-tight text-rose-950 sm:text-4xl">
+                    <p className="text-xs font-medium uppercase tracking-[0.32em] text-rose-400">a little question</p>
+                    <h1 className="mt-4 text-2xl font-semibold leading-tight text-rose-950 sm:text-4xl">
                       Will you go on a date with me? <span className="inline-block">🌸</span>
                     </h1>
                     <p className="mt-4 text-sm leading-6 text-rose-600 sm:text-base">
@@ -163,29 +163,30 @@ export default function HomePage() {
                     </p>
                   </div>
 
-                  <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+                  <div className="mt-8 flex flex-col items-center gap-4 sm:mt-10 sm:flex-row sm:justify-center">
                     <button
                       type="button"
                       onClick={proceedToConfirm}
-                      className="inline-flex min-w-[170px] items-center justify-center rounded-full bg-white px-8 py-3 text-base font-semibold text-black shadow-[0_16px_36px_rgba(219,39,119,0.18)] transition duration-300 ease-out hover:-translate-y-0.5 hover:bg-rose-50 focus:outline-none focus:ring-2 focus:ring-rose-200 focus:ring-offset-2"
+                      className="inline-flex w-full items-center justify-center rounded-full bg-gradient-to-r from-rose-500 to-pink-500 px-8 py-3 text-base font-semibold text-white shadow-[0_18px_38px_rgba(236,72,153,0.32)] transition duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_20px_44px_rgba(236,72,153,0.38)] focus:outline-none focus:ring-2 focus:ring-rose-200 focus:ring-offset-2 sm:min-w-[170px] sm:w-auto"
                     >
                       YES
                     </button>
 
-                    <div className="relative h-20 w-full max-w-[260px] rounded-[28px] border border-rose-100 bg-rose-50/80 px-4 py-3 shadow-soft sm:w-[260px]">
+                    <div className="relative h-20 w-full max-w-[260px] overflow-hidden rounded-[28px] border border-rose-100 bg-rose-50/80 px-4 py-3 shadow-soft sm:w-[260px]">
                       <button
                         type="button"
                         onMouseEnter={handleNoButton}
+                        onTouchStart={handleNoButton}
                         onFocus={handleNoButton}
                         style={{ top: `${noPos.top}%`, left: `${noPos.left}%`, transform: 'translate(-50%, -50%)' }}
-                        className="fixed z-50 inline-flex min-w-[140px] items-center justify-center rounded-full border border-rose-200 bg-white px-5 py-3 text-sm font-semibold text-rose-700 shadow-[0_12px_28px_rgba(219,39,119,0.18)] transition-all duration-300 ease-out hover:bg-rose-50 focus:outline-none focus:ring-2 focus:ring-rose-200"
+                        className="absolute z-20 inline-flex min-w-[120px] items-center justify-center rounded-full border border-rose-200 bg-white px-4 py-2.5 text-sm font-semibold text-rose-700 shadow-[0_12px_28px_rgba(219,39,119,0.18)] transition-all duration-300 ease-out hover:bg-rose-50 focus:outline-none focus:ring-2 focus:ring-rose-200 sm:min-w-[140px]"
                       >
                         NO 🙈
                       </button>
                     </div>
                   </div>
 
-                  <div className="mt-6 text-center text-sm text-rose-500">
+                  <div className="mt-6 text-center text-xs tracking-wide text-rose-500 sm:text-sm">
                     {noTries === 0 && 'Try your luck with the buttons...'}
                     {noTries > 0 && noTries < 4 && 'The NO button is feeling shy. Keep those fingers ready!'}
                     {noTries >= 4 && 'It’s trying its best to escape, but our date is already written in the stars.'}
@@ -200,28 +201,28 @@ export default function HomePage() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -24 }}
                   transition={{ duration: 0.4 }}
-                  className="relative overflow-hidden rounded-[28px] bg-white/90 p-6 sm:p-8"
+                  className="relative overflow-hidden rounded-[28px] bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(255,240,245,0.95))] p-5 sm:p-8"
                 >
                   <div className="absolute -right-8 top-8 grid h-24 w-24 place-items-center rounded-full bg-pink-100/80 text-3xl text-rose-400 shadow-soft">
                     <Sparkles className="h-7 w-7" />
                   </div>
-                  <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-3xl bg-rose-50 text-4xl shadow-soft">
+                  <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-[26px] bg-gradient-to-br from-rose-50 to-pink-100 text-4xl shadow-[0_18px_35px_rgba(244,114,182,0.18)]">
                     <span>🎉</span>
                   </div>
                   <div className="text-center">
-                    <p className="text-sm uppercase tracking-[0.28em] text-rose-400">you did it</p>
-                    <h1 className="mt-4 text-3xl font-semibold leading-tight text-rose-950 sm:text-4xl">
+                    <p className="text-xs font-medium uppercase tracking-[0.32em] text-rose-400">you did it</p>
+                    <h1 className="mt-4 text-2xl font-semibold leading-tight text-rose-950 sm:text-4xl">
                       WAIT, YOU ACTUALLY SAID YES?? <span className="inline-block">😭</span>
                     </h1>
                     <p className="mt-4 text-sm leading-6 text-rose-600 sm:text-base">
                       I was so ready for you to say no <span className="inline-block">🥹</span>
                     </p>
                   </div>
-                  <div className="mt-10 flex justify-center">
+                  <div className="mt-8 flex justify-center sm:mt-10">
                     <button
                       type="button"
                       onClick={proceedToSchedule}
-                      className="inline-flex items-center gap-2 rounded-full bg-white px-7 py-3 text-sm font-semibold text-black shadow-[0_14px_32px_rgba(219,39,119,0.18)] transition duration-300 ease-out hover:-translate-y-0.5 hover:bg-rose-50 focus:outline-none focus:ring-2 focus:ring-rose-200 focus:ring-offset-2"
+                      className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-rose-500 to-pink-500 px-7 py-3 text-sm font-semibold text-white shadow-[0_18px_38px_rgba(236,72,153,0.32)] transition duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_20px_44px_rgba(236,72,153,0.38)] focus:outline-none focus:ring-2 focus:ring-rose-200 focus:ring-offset-2 sm:w-auto"
                     >
                       okay okay! →
                     </button>
@@ -236,14 +237,14 @@ export default function HomePage() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -24 }}
                   transition={{ duration: 0.4 }}
-                  className="relative rounded-[28px] bg-white/90 p-6 sm:p-8"
+                  className="relative rounded-[28px] bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(255,240,245,0.95))] p-5 sm:p-8"
                 >
-                  <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-3xl bg-rose-50 text-4xl shadow-soft">
+                  <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-[26px] bg-gradient-to-br from-rose-50 to-pink-100 text-4xl shadow-[0_18px_35px_rgba(244,114,182,0.18)]">
                     <CalendarDays className="h-8 w-8 text-rose-500" />
                   </div>
                   <div className="text-center">
-                    <p className="text-sm uppercase tracking-[0.28em] text-rose-400">date planning</p>
-                    <h1 className="mt-4 text-3xl font-semibold leading-tight text-rose-950 sm:text-4xl">
+                    <p className="text-xs font-medium uppercase tracking-[0.32em] text-rose-400">date planning</p>
+                    <h1 className="mt-4 text-2xl font-semibold leading-tight text-rose-950 sm:text-4xl">
                       So... when are you free?
                     </h1>
                     <p className="mt-4 text-sm leading-6 text-rose-600 sm:text-base">
@@ -251,12 +252,12 @@ export default function HomePage() {
                     </p>
                   </div>
 
-                  <div className="mt-8 space-y-6">
-                    <div className="rounded-3xl border border-rose-100 bg-rose-50/60 p-4 shadow-sm">
+                  <div className="mt-8 space-y-4 sm:space-y-6">
+                    <div className="rounded-[24px] border border-rose-100 bg-gradient-to-r from-rose-50/80 to-pink-50/80 p-4 shadow-sm">
                       <div className="flex items-center gap-3 text-rose-700">
                         <span className="text-xl">📅</span>
                         <div>
-                          <p className="text-xs uppercase tracking-[0.28em] text-rose-400">Pick a Day</p>
+                          <p className="text-[10px] uppercase tracking-[0.28em] text-rose-400">Pick a Day</p>
                           <p className="mt-1 text-sm text-rose-600">Choose a date we can celebrate together.</p>
                         </div>
                       </div>
@@ -264,15 +265,16 @@ export default function HomePage() {
                         type="date"
                         value={selectedDate}
                         onChange={(event) => setSelectedDate(event.target.value)}
-                        className="mt-4 w-full rounded-3xl border border-rose-200 bg-white/90 px-4 py-3 text-sm text-rose-900 outline-none transition focus:border-pink-400 focus:ring-2 focus:ring-pink-100"
+                        className="mt-4 w-full rounded-2xl border border-rose-200 bg-white/90 px-4 py-3 text-base text-rose-900 outline-none transition focus:border-pink-400 focus:ring-2 focus:ring-pink-100"
+                        style={{ minHeight: '48px' }}
                       />
                     </div>
 
-                    <div className="rounded-3xl border border-rose-100 bg-rose-50/60 p-4 shadow-sm">
+                    <div className="rounded-[24px] border border-rose-100 bg-gradient-to-r from-rose-50/80 to-pink-50/80 p-4 shadow-sm">
                       <div className="flex items-center gap-3 text-rose-700">
                         <span className="text-xl">⏰</span>
                         <div>
-                          <p className="text-xs uppercase tracking-[0.28em] text-rose-400">What Time?</p>
+                          <p className="text-[10px] uppercase tracking-[0.28em] text-rose-400">What Time?</p>
                           <p className="mt-1 text-sm text-rose-600">Pick a time that feels just right.</p>
                         </div>
                       </div>
@@ -280,7 +282,8 @@ export default function HomePage() {
                         type="time"
                         value={selectedTime}
                         onChange={(event) => setSelectedTime(event.target.value)}
-                        className="mt-4 w-full rounded-3xl border border-rose-200 bg-white/90 px-4 py-3 text-sm text-rose-900 outline-none transition focus:border-pink-400 focus:ring-2 focus:ring-pink-100"
+                        className="mt-4 w-full rounded-2xl border border-rose-200 bg-white/90 px-4 py-3 text-base text-rose-900 outline-none transition focus:border-pink-400 focus:ring-2 focus:ring-pink-100"
+                        style={{ minHeight: '48px' }}
                       />
                     </div>
                   </div>
@@ -295,7 +298,7 @@ export default function HomePage() {
                     <button
                       type="button"
                       onClick={proceedToFinish}
-                      className="inline-flex items-center justify-center rounded-full bg-white px-8 py-3 text-sm font-semibold text-black shadow-[0_14px_32px_rgba(219,39,119,0.18)] transition duration-300 ease-out hover:-translate-y-0.5 hover:bg-rose-50 focus:outline-none focus:ring-2 focus:ring-rose-200 focus:ring-offset-2"
+                      className="inline-flex w-full items-center justify-center rounded-full bg-white px-8 py-3 text-sm font-semibold text-black shadow-[0_14px_32px_rgba(219,39,119,0.18)] transition duration-300 ease-out hover:-translate-y-0.5 hover:bg-rose-50 focus:outline-none focus:ring-2 focus:ring-rose-200 focus:ring-offset-2 sm:w-auto"
                     >
                       set the date! ♥
                     </button>
@@ -310,7 +313,7 @@ export default function HomePage() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -24 }}
                   transition={{ duration: 0.4 }}
-                  className="relative rounded-[28px] bg-white/90 p-6 sm:p-8"
+                  className="relative rounded-[28px] bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(255,240,245,0.95))] p-5 sm:p-8"
                 >
                   <div className="absolute left-5 top-5 grid h-16 w-16 place-items-center rounded-3xl bg-pink-100/90 text-rose-600 shadow-soft">
                     <Smile className="h-7 w-7" />
@@ -320,8 +323,8 @@ export default function HomePage() {
                   </div>
 
                   <div className="text-center">
-                    <p className="text-sm uppercase tracking-[0.28em] text-rose-400">it’s official</p>
-                    <h1 className="mt-4 text-3xl font-semibold leading-tight text-rose-950 sm:text-4xl">
+                    <p className="text-xs font-medium uppercase tracking-[0.32em] text-rose-400">it’s official</p>
+                    <h1 className="mt-4 text-2xl font-semibold leading-tight text-rose-950 sm:text-4xl">
                       glad you didn&apos;t say no. be ready by {formattedTime || 'your chosen time'}, I&apos;m coming to get you <span className="inline-block">🚗</span>
                     </h1>
                     <p className="mt-4 text-sm leading-6 text-rose-600 sm:text-base">
@@ -329,8 +332,8 @@ export default function HomePage() {
                     </p>
                   </div>
 
-                  <div className="mt-8 space-y-4 rounded-[28px] border border-rose-100 bg-rose-50/70 px-5 py-5 text-center shadow-sm sm:px-6">
-                    <p className="text-xs uppercase tracking-[0.28em] text-rose-400">Your date</p>
+                  <div className="mt-8 space-y-4 rounded-[28px] border border-rose-100 bg-gradient-to-r from-rose-50/80 to-pink-50/80 px-4 py-5 text-center shadow-sm sm:px-6">
+                    <p className="text-[10px] uppercase tracking-[0.28em] text-rose-400">Your date</p>
                     <p className="text-lg font-semibold text-rose-900">{formattedDate || 'No date selected'}</p>
                     <p className="text-base text-rose-700">{formattedTime || 'No time selected'}</p>
                   </div>
@@ -339,7 +342,7 @@ export default function HomePage() {
                     <button
                       type="button"
                       onClick={startCelebration}
-                      className="inline-flex items-center justify-center rounded-full bg-white px-8 py-3 text-sm font-semibold text-black shadow-[0_14px_32px_rgba(219,39,119,0.18)] transition duration-300 ease-out hover:-translate-y-0.5 hover:bg-rose-50 focus:outline-none focus:ring-2 focus:ring-rose-200 focus:ring-offset-2"
+                      className="inline-flex w-full items-center justify-center rounded-full bg-gradient-to-r from-rose-500 to-pink-500 px-8 py-3 text-sm font-semibold text-white shadow-[0_18px_38px_rgba(236,72,153,0.32)] transition duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_20px_44px_rgba(236,72,153,0.38)] focus:outline-none focus:ring-2 focus:ring-rose-200 focus:ring-offset-2 sm:w-auto"
                     >
                       ok I accept 💐
                     </button>
